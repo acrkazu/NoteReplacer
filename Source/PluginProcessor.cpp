@@ -145,14 +145,14 @@ void NoteReplacerAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer,
   // timing
   {
     juce::MidiBuffer processedMidi;
-    juce::MidiMessage msg;
-    int samplePosition;
 
-    for (juce::MidiBuffer::Iterator it(midiMessages);
-         it.getNextEvent(msg, samplePosition);) {
+    for (const auto metadata : midiMessages) {
+      auto msg = metadata.getMessage();
+      const int samplePosition = metadata.samplePosition;
+
       if (msg.isNoteOn() || msg.isNoteOff()) {
-        int new_note_number =
-            drum_map_manager_.ConvertGMtoGGD((uint8_t)msg.getNoteNumber());
+        int new_note_number = drum_map_manager_.ConvertGMtoGGD(
+            static_cast<uint8_t>(msg.getNoteNumber()));
         msg.setNoteNumber(new_note_number);
       }
 

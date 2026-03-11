@@ -71,116 +71,60 @@ void DrumMapManager::CreateDrumMap() {
   AddictiveDrums_ = AddictiveDrums;
 }
 
-uint8_t DrumMapManager::ConvertGGDtoGM(uint8_t src_note) {
+uint8_t DrumMapManager::Convert(uint8_t src_note,
+                                const DrumMap& from,
+                                const DrumMap& to) const {
   auto contains = [](const std::vector<uint8_t>& v, uint8_t note) {
     return std::find(v.begin(), v.end(), note) != v.end();
   };
 
-  if (contains(GGDModernAndMassive_.kick, src_note)) {
-    if (!GM_.kick.empty()) return GM_.kick[0];
-  } else if (contains(GGDModernAndMassive_.snare_side_stick, src_note)) {
-    if (!GM_.snare_side_stick.empty()) return GM_.snare_side_stick[0];
-    if (!GM_.snare_rim.empty()) return GM_.snare_rim[0];
-  } else if (contains(GGDModernAndMassive_.snare_open, src_note)) {
-    if (!GM_.snare_open.empty()) return GM_.snare_open[0];
-  } else if (contains(GGDModernAndMassive_.snare_rim, src_note)) {
-    if (!GM_.snare_rim.empty()) return GM_.snare_rim[0];
-  } else if (contains(GGDModernAndMassive_.tom_1_open, src_note)) {
-    if (!GM_.tom_1_open.empty()) return GM_.tom_1_open[0];
-  } else if (contains(GGDModernAndMassive_.tom_2_open, src_note)) {
-    if (!GM_.tom_2_open.empty()) return GM_.tom_2_open[0];
-  } else if (contains(GGDModernAndMassive_.tom_3_open, src_note)) {
-    if (!GM_.tom_3_open.empty()) return GM_.tom_3_open[0];
-  } else if (contains(GGDModernAndMassive_.tom_4_open, src_note)) {
-    if (!GM_.tom_4_open.empty()) return GM_.tom_4_open[0];
-  } else if (contains(GGDModernAndMassive_.hh_foot_close, src_note)) {
-    if (!GM_.hh_foot_close.empty()) return GM_.hh_foot_close[0];
-    if (!GM_.hh_pedal_chick.empty()) return GM_.hh_pedal_chick[0];
-  } else if (contains(GGDModernAndMassive_.hh_closed_tip, src_note) ||
-             contains(GGDModernAndMassive_.hh_closed, src_note)) {
-    if (!GM_.hh_closed.empty()) return GM_.hh_closed[0];
-  } else if (contains(GGDModernAndMassive_.hh_open, src_note)) {
-    if (!GM_.hh_open.empty()) return GM_.hh_open[0];
-  } else if (contains(GGDModernAndMassive_.hh_pedal_chick, src_note)) {
-    if (!GM_.hh_pedal_chick.empty()) return GM_.hh_pedal_chick[0];
-  } else if (contains(GGDModernAndMassive_.ride_bell, src_note)) {
-    if (!GM_.ride_bell.empty()) return GM_.ride_bell[0];
-  } else if (contains(GGDModernAndMassive_.ride_crash, src_note)) {
-    if (!GM_.ride_crash.empty()) return GM_.ride_crash[0];
-  } else if (contains(GGDModernAndMassive_.ride_tip, src_note)) {
-    if (!GM_.ride_tip.empty()) return GM_.ride_tip[0];
-  } else if (contains(GGDModernAndMassive_.crash_l, src_note) ||
-             contains(GGDModernAndMassive_.crash_r, src_note)) {
-    if (!GM_.crash_l.empty()) return GM_.crash_l[0];
-  } else if (contains(GGDModernAndMassive_.china, src_note)) {
-    if (!GM_.china.empty()) return GM_.china[0];
+  if (contains(from.kick, src_note)) {
+    if (!to.kick.empty()) return to.kick[0];
+  } else if (contains(from.snare_side_stick, src_note)) {
+    if (!to.snare_side_stick.empty()) return to.snare_side_stick[0];
+    if (!to.snare_rim.empty()) return to.snare_rim[0];
+  } else if (contains(from.snare_open, src_note)) {
+    if (!to.snare_open.empty()) return to.snare_open[0];
+  } else if (contains(from.snare_rim, src_note)) {
+    if (!to.snare_rim.empty()) return to.snare_rim[0];
+  } else if (contains(from.tom_1_open, src_note)) {
+    if (!to.tom_1_open.empty()) return to.tom_1_open[0];
+  } else if (contains(from.tom_2_open, src_note)) {
+    if (!to.tom_2_open.empty()) return to.tom_2_open[0];
+  } else if (contains(from.tom_3_open, src_note)) {
+    if (!to.tom_3_open.empty()) return to.tom_3_open[0];
+  } else if (contains(from.tom_4_open, src_note)) {
+    if (!to.tom_4_open.empty()) return to.tom_4_open[0];
+  } else if (contains(from.hh_foot_close, src_note)) {
+    if (!to.hh_foot_close.empty()) return to.hh_foot_close[0];
+    if (!to.hh_pedal_chick.empty()) return to.hh_pedal_chick[0];
+  } else if (contains(from.hh_closed_tip, src_note) ||
+             contains(from.hh_closed, src_note)) {
+    if (!to.hh_closed.empty()) return to.hh_closed[0];
+  } else if (contains(from.hh_open, src_note)) {
+    if (!to.hh_open.empty()) return to.hh_open[0];
+  } else if (contains(from.hh_pedal_chick, src_note)) {
+    if (!to.hh_pedal_chick.empty()) return to.hh_pedal_chick[0];
+  } else if (contains(from.ride_bell, src_note)) {
+    if (!to.ride_bell.empty()) return to.ride_bell[0];
+  } else if (contains(from.ride_crash, src_note)) {
+    if (!to.ride_crash.empty()) return to.ride_crash[0];
+  } else if (contains(from.ride_tip, src_note)) {
+    if (!to.ride_tip.empty()) return to.ride_tip[0];
+  } else if (contains(from.crash_l, src_note) ||
+             contains(from.crash_r, src_note)) {
+    if (!to.crash_l.empty()) return to.crash_l[0];
+  } else if (contains(from.china, src_note)) {
+    if (!to.china.empty()) return to.china[0];
   }
 
   return src_note;
 }
 
+uint8_t DrumMapManager::ConvertGGDtoGM(uint8_t src_note) {
+  return Convert(src_note, GGDModernAndMassive_, GM_);
+}
+
 uint8_t DrumMapManager::ConvertGMtoGGD(uint8_t src_note) {
-  auto contains = [](const std::vector<uint8_t>& v, uint8_t note) {
-    return std::find(v.begin(), v.end(), note) != v.end();
-  };
-
-  if (contains(GM_.kick, src_note)) {
-    if (!GGDModernAndMassive_.kick.empty()) return GGDModernAndMassive_.kick[0];
-  } else if (contains(GM_.snare_side_stick, src_note)) {
-    if (!GGDModernAndMassive_.snare_side_stick.empty())
-      return GGDModernAndMassive_.snare_side_stick[0];
-    if (!GGDModernAndMassive_.snare_rim.empty())
-      return GGDModernAndMassive_.snare_rim[0];
-  } else if (contains(GM_.snare_open, src_note)) {
-    if (!GGDModernAndMassive_.snare_open.empty())
-      return GGDModernAndMassive_.snare_open[0];
-  } else if (contains(GM_.snare_rim, src_note)) {
-    if (!GGDModernAndMassive_.snare_rim.empty())
-      return GGDModernAndMassive_.snare_rim[0];
-  } else if (contains(GM_.tom_1_open, src_note)) {
-    if (!GGDModernAndMassive_.tom_1_open.empty())
-      return GGDModernAndMassive_.tom_1_open[0];
-  } else if (contains(GM_.tom_2_open, src_note)) {
-    if (!GGDModernAndMassive_.tom_2_open.empty())
-      return GGDModernAndMassive_.tom_2_open[0];
-  } else if (contains(GM_.tom_3_open, src_note)) {
-    if (!GGDModernAndMassive_.tom_3_open.empty())
-      return GGDModernAndMassive_.tom_3_open[0];
-  } else if (contains(GM_.tom_4_open, src_note)) {
-    if (!GGDModernAndMassive_.tom_4_open.empty())
-      return GGDModernAndMassive_.tom_4_open[0];
-  } else if (contains(GM_.hh_foot_close, src_note)) {
-    if (!GGDModernAndMassive_.hh_foot_close.empty())
-      return GGDModernAndMassive_.hh_foot_close[0];
-    if (!GGDModernAndMassive_.hh_pedal_chick.empty())
-      return GGDModernAndMassive_.hh_pedal_chick[0];
-  } else if (contains(GM_.hh_closed, src_note) ||
-             contains(GM_.hh_closed_tip, src_note)) {
-    if (!GGDModernAndMassive_.hh_closed.empty())
-      return GGDModernAndMassive_.hh_closed[0];
-  } else if (contains(GM_.hh_open, src_note)) {
-    if (!GGDModernAndMassive_.hh_open.empty())
-      return GGDModernAndMassive_.hh_open[0];
-  } else if (contains(GM_.hh_pedal_chick, src_note)) {
-    if (!GGDModernAndMassive_.hh_pedal_chick.empty())
-      return GGDModernAndMassive_.hh_pedal_chick[0];
-  } else if (contains(GM_.ride_bell, src_note)) {
-    if (!GGDModernAndMassive_.ride_bell.empty())
-      return GGDModernAndMassive_.ride_bell[0];
-  } else if (contains(GM_.ride_crash, src_note)) {
-    if (!GGDModernAndMassive_.ride_crash.empty())
-      return GGDModernAndMassive_.ride_crash[0];
-  } else if (contains(GM_.ride_tip, src_note)) {
-    if (!GGDModernAndMassive_.ride_tip.empty())
-      return GGDModernAndMassive_.ride_tip[0];
-  } else if (contains(GM_.crash_l, src_note) ||
-             contains(GM_.crash_r, src_note)) {
-    if (!GGDModernAndMassive_.crash_l.empty())
-      return GGDModernAndMassive_.crash_l[0];
-  } else if (contains(GM_.china, src_note)) {
-    if (!GGDModernAndMassive_.china.empty())
-      return GGDModernAndMassive_.china[0];
-  }
-
-  return src_note;
+  return Convert(src_note, GM_, GGDModernAndMassive_);
 }
