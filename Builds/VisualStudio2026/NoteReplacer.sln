@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio Version 18
+
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NoteReplacer - VST3", "NoteReplacer_VST3.vcxproj", "{90415780-5ECE-D1AD-F8E3-B46E98327989}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D3C071F-31BB-EE96-1A46-F6E1652E165B} = {8D3C071F-31BB-EE96-1A46-F6E1652E165B}
+		{7037E3A6-1C10-3BA1-7AD0-F188B430179E} = {7037E3A6-1C10-3BA1-7AD0-F188B430179E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NoteReplacer - Shared Code", "NoteReplacer_SharedCode.vcxproj", "{8D3C071F-31BB-EE96-1A46-F6E1652E165B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NoteReplacer - VST3 Manifest Helper", "NoteReplacer_VST3ManifestHelper.vcxproj", "{7037E3A6-1C10-3BA1-7AD0-F188B430179E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90415780-5ECE-D1AD-F8E3-B46E98327989}.Debug|x64.ActiveCfg = Debug|x64
+		{90415780-5ECE-D1AD-F8E3-B46E98327989}.Debug|x64.Build.0 = Debug|x64
+		{90415780-5ECE-D1AD-F8E3-B46E98327989}.Release|x64.ActiveCfg = Release|x64
+		{90415780-5ECE-D1AD-F8E3-B46E98327989}.Release|x64.Build.0 = Release|x64
+		{8D3C071F-31BB-EE96-1A46-F6E1652E165B}.Debug|x64.ActiveCfg = Debug|x64
+		{8D3C071F-31BB-EE96-1A46-F6E1652E165B}.Debug|x64.Build.0 = Debug|x64
+		{8D3C071F-31BB-EE96-1A46-F6E1652E165B}.Release|x64.ActiveCfg = Release|x64
+		{8D3C071F-31BB-EE96-1A46-F6E1652E165B}.Release|x64.Build.0 = Release|x64
+		{7037E3A6-1C10-3BA1-7AD0-F188B430179E}.Debug|x64.ActiveCfg = Debug|x64
+		{7037E3A6-1C10-3BA1-7AD0-F188B430179E}.Debug|x64.Build.0 = Debug|x64
+		{7037E3A6-1C10-3BA1-7AD0-F188B430179E}.Release|x64.ActiveCfg = Release|x64
+		{7037E3A6-1C10-3BA1-7AD0-F188B430179E}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
